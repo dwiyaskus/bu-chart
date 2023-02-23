@@ -1,0 +1,3 @@
+untuk bikin library sendiri
+npm install --save-dev chromatic
+npx chromatic --project-token=2a110bc75831

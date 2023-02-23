@@ -1,0 +1,32 @@
+<section class="content content-full">
+  <div class="row clearfix">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="body">
+          <div class="multi-graph">
+            <div [style.z-index]="999">
+              {{ data.length }} KPI <br />
+              Unggulan <br />
+              BEI 2022
+            </div>
+
+            <div
+              *ngFor="let item of data; let i = index"
+              class="graph"
+              [style.--percentage]="(i + 1) * (100 / data.length)"
+              [style.--fill]="item.color_code"
+              [style.z-index]="data.length - i"
+            >
+              <span class="percent-text">{{ item.percentage }}</span>
+              <div class="number-text">
+                <label>{{ item.id }}</label>
+              </div>
+              <span class="status-text">{{ item.realisasi_short }}</span>
+              <span class="title-text">{{ item.kpi }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,214 @@
+// KPI Chart Styling
+/* ===================Multi Semi Donut Chart ======================== */
+
+.multi-graph {
+  /* width: 600px;
+        height: 300px;
+        min-width: 100vw;
+        min-height: 80vh; */
+  position: relative;
+  color: #3a3a3a;
+  font-size: 2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 1rem;
+  text-align: center;
+  // height: 100%;
+  height: 700px;
+  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  z-index: 1;
+  zoom: 70%;
+}
+
+.multi-graph:before {
+  content: "";
+  width: 1040px;
+  height: 520px;
+  border: 197px solid rgba(0, 0, 0, 0.7);
+  border-bottom: none;
+  position: absolute;
+  box-sizing: border-box;
+  transform-origin: 50% 0%;
+  border-radius: 1000px 1000px 0 0;
+  bottom: 0;
+  background: #f7f7f7;
+  z-index: -1;
+}
+
+.multi-graph:after {
+  content: "";
+  width: 400px;
+  height: 200px;
+  border: 20px solid rgba(255, 255, 255, 0.25);
+  border-bottom: none;
+  position: absolute;
+  box-sizing: border-box;
+  transform-origin: 50% 0%;
+  border-radius: 500px 500px 0 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+.multi-graph .graph {
+  width: 600px;
+  height: 300px;
+  border: 120px solid var(--fill);
+  border-top: none;
+  outline: 1px solid #f7f7f7;
+  position: absolute;
+  transform-origin: 50% 0% 0;
+  border-radius: 0 0 300px 300px;
+  left: 0;
+  top: 100%;
+  /* z-index: 5; */
+  z-index: -1;
+  animation: 1s fillGraphAnimation ease-in;
+  transform: rotate(calc(1deg * (var(--percentage) * 1.8)));
+  box-sizing: border-box;
+  cursor: pointer;
+  inset-inline: auto;
+}
+
+.multi-graph .graph:after {
+  /* content: attr(data-name) ; */
+  content: attr(data-name) " " counter(varible) "%";
+  counter-reset: varible var(--percentage);
+  background: var(--fill);
+  box-sizing: border-box;
+  border-radius: 2px;
+  color: #f7f7f7;
+  font-weight: 200;
+  font-size: 12px;
+  height: 20px;
+  padding: 3px 5px;
+  top: 0px;
+  position: absolute;
+  left: 0;
+  transform: rotate(calc(-1deg * var(--percentage) * 1.8)) translate(-30px, 0px);
+  transition: 0.2s ease-in;
+  transform-origin: 0 50% 0;
+  opacity: 0;
+}
+
+.multi-graph .graph:hover {
+  opacity: 0.8;
+}
+
+//   .multi-graph .graph:hover:after{
+//     opacity: 1;
+//     left: 30px;
+//   }
+
+@keyframes fillAnimation {
+  0% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(135deg);
+  }
+}
+
+@keyframes fillGraphAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+}
+
+.multi-graph .graph .percent-text {
+  font-size: 1rem;
+  position: absolute;
+  top: 2rem;
+  left: -5.5rem;
+  /* top: calc(var(--percentage) * 0.476% );
+        left: calc(var(--percentage) * -0.14% ); */
+  transform: rotate(calc(-1deg * var(--percentage) * 1.8)) translate(0px, 0px);
+  /* transform-origin: 0 calc(var(--percentage) * 0.8%) 0; */
+}
+
+.multi-graph .graph .number-text {
+  color: #f7f7f7;
+  font-size: 1rem;
+  padding: 1rem;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  position: absolute;
+  // top: 2rem;
+  // left: -8.5rem;
+  top: 2.5rem;
+  left: -8rem;
+
+  /* 8
+        top: 2rem;
+        left: -8.5rem;
+        
+        7
+        top: 2.5rem;
+        left: -8.5rem;
+      
+        6
+        top: 3rem;
+        left: -8rem;
+      
+        5
+        top: 4rem;
+        left: -8rem;
+      
+        4
+        top: 5.5rem;
+        left: -7.5rem;
+      
+        3
+        top: 7.5rem;
+        left: -6.5rem;
+      
+        2
+        top: 11.5rem;
+        left: -3.5rem;
+      
+        1
+        top: 17rem;
+        left: 10rem;
+      
+        5.5 4 2 1.5 1 0.5 0.5
+        13.5 3.5 1 0.5 0 0.5 0.5 */
+
+  transform: rotate(calc(-1deg * var(--percentage) * 1.8)) translate(0px, 0px);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.multi-graph .graph .number-text label {
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.multi-graph .graph .status-text {
+  color: #f7f7f7;
+  font-weight: 100;
+  font-size: 1rem;
+  position: absolute;
+  top: 4.5rem;
+  left: -20rem;
+  width: 50%;
+  transform: rotate(calc(-1deg * var(--percentage) * 1.8)) translate(0px, 0px);
+}
+
+.multi-graph .graph .title-text {
+  color: #f8c62b;
+  font-size: 1rem;
+  position: absolute;
+  top: 6rem;
+  left: -32rem;
+  width: 50%;
+  transform: rotate(calc(-1deg * var(--percentage) * 1.8)) translate(0px, 0px);
+}
