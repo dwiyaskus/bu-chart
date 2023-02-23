@@ -9,7 +9,8 @@
     "test": "ng test",
     "storybook": "npm run docs:json && start-storybook -p 7789",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
-    "build-storybook": "npm run docs:json && build-storybook"
+    "build-storybook": "npm run docs:json && build-storybook",
+    "chromatic": "npx chromatic --project-token=2a110bc75831"
   },
   "private": true,
   "dependencies": {
